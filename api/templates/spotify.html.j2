@@ -1,122 +1,102 @@
-<svg width="480" height="133" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <foreignObject width="480" height="133">
+
+<svg width="262" height="207" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <foreignObject width="262" height="207">
         <div xmlns="http://www.w3.org/1999/xhtml" class="container">
             <style>
                 div {
-                    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
-                }
-
-                .main {
-                    display: flex;
+                    font-family: Raleway, Lato, sans-serif;
+                    position: absolute;
+                    font-weight: 300;
+                    font-size: 16px;
+                    line-height: 19px;
+                    text-decoration: none; 
+                    text-overflow: ellipsis; 
+                    overflow: hidden; 
+                    white-space: nowrap;
+                    color: white;
                 }
 
                 .container {
-                    border-radius: 5px;
-                    padding: 10px 10px 10px 0px;
-                }
-
-                .playing {
-                    font-weight: bold;
-                    color: #53b14f;
-                    text-align: center;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-
-                .not-play {
-                    color: #ff1616;
-                }
-
-                .art {
-                    float: left;
-                    width: 27%;
-                    margin-left: -5px;
-                }
-
-                .text {
-                    width: 71%;
-                }
-
-                .song {
-                    font-size: 24px;
-                    color: #666;
-                    text-align: center;
-                    margin-top: 3px;
-                }
-
-                .artist {
-                    font-size: 20px;
-                    color: #b3b3b3;
-                    text-align: center;
-                    margin-bottom: 5px;
-                }
-
-                .logo {
-                    margin-left: 5px;
-                    margin-top: 5px;
+                    position: relative;
+                    width: 262px;
+                    height: 207px;
+                    border-radius: 20px;
+                    background: #1E1E1E;
                 }
 
                 .cover {
-                    border-radius: 5px;
-                    height: 100px;
-                    width: 100px;
-                }
-
-                #bars {
-                    height: 30px;
-                    bottom: 23px;
-                    margin: -20px 0 0 0px;
                     position: absolute;
-                    width: 40px;
+                    width: 109px;
+                    height: 109px;
+                    left: 16px;
+                    top: 16px;
                 }
 
-                .bar {
-                    background: #1DB954cc;
-                    bottom: 1px;
-                    height: 3px;
+                .playing {
+                    width: 63px;
+                    height: 38px;
+                    left: 135px;
+                    top: 16px;
+                    font-weight: 300;
+                    font-size: 16px;
+                    line-height: 19px;
+                    color: #BABABA;
+                    white-space: normal;
+                }
+
+                .logo {
                     position: absolute;
-                    width: 3px;
-                    animation: sound 0ms -800ms linear infinite alternate;
-                }
-                
-                @keyframes sound {
-                    0% {
-                        opacity: .35;
-                        height: 3px;
-                    }
-
-                    100% {
-                        opacity: 1;
-                        height: 15px;
-                    }
+                    width: 38px;
+                    height: 38px;
+                    left: 208px;
+                    top: 17px;
+                    fill: #1ED760;;
                 }
 
-                {{css_bar|safe}}
+                .album {
+                    width: 111px;
+                    height: 23px;
+                    left: 135px;
+                    top: 102px;
+                    font-weight: 300;
+                    font-size: 18px;
+                }
+
+                .artist {
+                    width: 230px;
+                    height: 24px;
+                    left: 16px;
+                    top: 135px;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 20px;
+                    line-height: 24px;
+                }
+
+                .song {
+                    position: absolute;
+                    width: 230px;
+                    height: 24px;
+                    left: 16px;
+                    top: 167px;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 20px;
+                    line-height: 24px;
+                    color: #1ED760;
+                }
+
             </style>
-
-            {% if song_name %}
-
-            <div class="main">
-                <a class="art" href="{}" target="_BLANK">
-                    <center>
-                            <img src="data:image/png;base64, {{img}}" class="cover" />
-                    </center>
-                </a>
-
-                <div class="text">
-                    <div class="song">{{song_name}}</div>
-                    <div class="artist">{{artist_name}}</div>
-                    <div id="bars">
-                        {{content_bar|safe}}
-                    </div>
-                </div>
-
-                {% else %}
-                    <div class="playing not-play">Nothing playing on Spotify</div>
-                {% endif %}
-            </div>
-
+            <img src="data:image/png;base64, {{img}}" class="cover" />
+            {% if playing %}
+                <div class="playing">Now Playing</div>
+            {% else %}
+                <div class="playing">Recently Played</div>
+            {% endif %}
+            <svg class="logo" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Spotify icon</title><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>
+            <div class="album">{{album_name}}</div>
+            <div class="artist">{{artist_name}}</div>
+            <div class="song">{{song_name}}</div>
         </div>
     </foreignObject>
 </svg>
